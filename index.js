@@ -242,6 +242,11 @@ const myBot = [
     type: "message",
     content: "mauvaise syntaxe: meme {url de l'image} {premiere ligne} {(optionel) seconde ligne}",
   },
+  {
+    word: ["blague, joke"],
+    type: "function",
+    content: sendJoke,
+  }
 ]
 
 
@@ -322,4 +327,11 @@ function createMeme(id, text) {
     return true
   }
   return false
+}
+
+function sendJoke(id, text) {
+  fetch("http://api.icndb.com/jokes/random")
+  .then(rep => rep.json())
+  .then(res => textMessage(id, res.value.joke))
+  return true
 }
