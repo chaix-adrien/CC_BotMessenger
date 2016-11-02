@@ -8,7 +8,6 @@ app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
 
 app.get('/', function (req, res) {
-    res.send('This is TestBot Server');
     res.send(process.env.PAGE_ACCESS_TOKEN);
     res.send('end');
 });
