@@ -88,9 +88,27 @@ function onMessageExempleAction(id, text) {
 }
 
 function onMessageBotAction(id, text) {
-  for (config of myBoot) {
-    console.log("ici")
+  const words = text.split(' ')
+  for (config of myBoot) { //on boucle sur les differentes config
     console.log(config)
+    for (word of words) { //pour chaques config, on boucle sur tout les mots reçut
+      console.log("word:", word)
+      if (word === config.word) { //si le mot est celui de la config
+        console.log("word match")
+        if (config.type === "message") { //on dispatch les differents types d'action (message / function / photo oû content = url ...)
+          console.log("send message:", config.content)
+          sendMessage(id, config.content)
+          return //on valide
+        } else if (config.type === "function") {
+          console.log("call function:", config.content)
+          if (config.content(id, text)) { //si la fonction valide la saisie et la traite
+            console.log("VALID")
+            return //on valide
+          }
+          console.log("INVALID")
+        }
+      }
+    }
   }
 }
 

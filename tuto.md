@@ -8,6 +8,13 @@ heroku => set le script start (https://devcenter.heroku.com/articles/nodejs-supp
 Expliquer le principe d'une api
 Expliquer le but d'une clef API
 
+##JS
+specificité js:
+  === / !==
+  for of
+  string.split()
+
+
 ##index.js
 expliquer le principe de requette (POST / GET / URL)
 verify_token && testbot_verify_token configurable mais a modifier par la suite ducoup

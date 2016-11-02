@@ -39,13 +39,11 @@ function kittenMessage(id, text) {
 const config = [
   {
     word: "kitten",
-    place: 0,
     type: "function",
     content: kittenMessage,
   },
   {
     word: "kitten",
-    place: null,
     type: "message",
     content: "Oh, you love kitten? try >kitten 300 400"
   }
