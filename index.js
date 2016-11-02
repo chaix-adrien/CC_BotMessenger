@@ -216,7 +216,7 @@ const myBot = [
 
 // send rich message with kitten
 function sendCatPicture(id, text) {
-
+  console.log(JSON.stringify(myBot))
   text = text || "";
   var values = text.split(' ');
   if (values.length === 3 && values[0] === 'kitten') {
