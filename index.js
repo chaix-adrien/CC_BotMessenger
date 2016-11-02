@@ -196,12 +196,12 @@ const myBot = [
     content: displayAllBot,
   },
   {
-    word: ["chat"],
+    word: ["chat", "cat"],
     type: "function",
     content: sendCatPicture,
   },
   {
-    word: ["chat"],
+    word: ["chat", "cat"],
     type: "message",
     content: "t'aime les pitis chat? Essaie \"chat 300 400\""
   },
@@ -211,7 +211,7 @@ const myBot = [
     content: textMessage,
   },
   {
-    word: "what's the name of the song".split(" "),
+    word: ["song"],
     type: "function",
     content: rickroll,
   },
@@ -239,7 +239,7 @@ function sendCatPicture(id, text) {
   console.log(JSON.stringify(myBot))
   text = text || "";
   var values = text.split(' ');
-  if (values.length === 3 && values[0] === 'chat') {
+  if (values.length === 3 && (values[0] === 'chat' || values[0] === 'cat')) {
     if (Number(values[1]) > 0 && Number(values[2]) > 0) {
       var imageUrl = "https://placekitten.com/" + Number(values[1]) + "/" + Number(values[2]);
       const buttons = [{
