@@ -236,7 +236,12 @@ const myBot = [
     word: ["meme"],
     type: "function",
     content: createMeme,
-  }, 
+  },
+  {
+    word: ["meme"],
+    type: "message",
+    content: "mauvaise syntaxe: meme {url de l'image} {premiere ligne} {(optionel) seconde ligne}",
+  },
 ]
 
 
