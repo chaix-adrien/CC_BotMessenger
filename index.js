@@ -52,23 +52,33 @@ function sendMessage(recipientId, message) {
   });
 };
 
-function questionMessage(id, urlPicture, buttons) {
+function pictureMessage(id, urlPicture, text) {
   message = {
+    "text": text,
     "attachment": {
-      "type": "template",
+      "type": "image",
       "payload": {
-        "template_type": "generic",
-        "elements": [{
-          "title": "Kitten",
-          "subtitle": "Cute kitten picture",
-          "image_url": urlPicture ,
-          "buttons": buttons
-        }]
+        "url": urlPicture ,
       }
     }
   };
   sendMessage(id, message);
 };
+
+function audioMessage(id, audioUrl) {
+  message = {
+    "attachment": {
+      "type": "audio",
+      "payload": {
+        "template_type": "generic",
+        "elements": [{
+          "url": urlPicture ,
+        }]
+      }
+    }
+  };
+  sendMessage(id, message);
+}
 
 function textMessage(id, text) {
   sendMessage(id, {text: text})
@@ -140,8 +150,8 @@ const myBot = [
   {
     word: "kitten",
     type: "message",
-    content: "Oh, you love kitten? try >kitten 300 400"
-  }
+    content: "Oh, you love kitten? try \"kitten 300 400\""
+  },
 ]
 
 
@@ -168,7 +178,7 @@ function kittenMessage(id, text) {
         "title": "I like this",
         "payload": "User " + id + " likes kitten " + imageUrl,
       }]
-      questionMessage(id, imageUrl, buttons);
+      pictureMessage(id, imageUrl, "Hello");
       return true;
     }
   }
