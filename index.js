@@ -90,7 +90,7 @@ function onMessageExempleAction(id, text) {
 function onMessageBotAction(id, text) {
   for (config of myBoot) {
     console.log("ici")
-    console.log()
+    console.log(config)
   }
 }
 
