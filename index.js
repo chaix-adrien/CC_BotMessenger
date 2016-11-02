@@ -146,7 +146,6 @@ function onMessageExempleAction(id, text) {
 function onMessageBotAction(id, text) {
   const words = text.split(' ')
   for (config of myBot) { //on boucle sur les differentes config
-    console.log(config)
     for (word of words) { //pour chaques config, on boucle sur tout les mots reçut
       for (configWord of config.word) {
         if (word === configWord) { //si le mot est celui de la config
