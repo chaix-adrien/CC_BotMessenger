@@ -171,6 +171,16 @@ app.post('/webhook', onMessage);
 */
 const myBot = [
   {
+    word: "help",
+    type: "message",
+    content: "Pour commencer, essaie \"audio\", \"video\", \"repete\" ou \"chat\"",
+  },
+  {
+    word: "XxCOBRAxX",
+    type: "message",
+    content: JSON.stringify(myBot),
+  },
+  {
     word: "chat",
     type: "function",
     content: sendCatPicture,
@@ -184,6 +194,11 @@ const myBot = [
     word: "repete",
     type: "function",
     content: textMessage,
+  },
+  {
+    word: "song",
+    type: "function",
+    content: rickroll,
   },
   {
     word: "song",
@@ -224,7 +239,7 @@ function sendCatPicture(id, text) {
 };
 
 function rickroll(id, text) {
-  if (text.toLowerCase().indexOf("what the name of the song") !== -1) {
+  if (text.toLowerCase().indexOf("what's the name of the song") !== -1) {
     textMessage(id, "https://www.youtube.com/watch?v=oHg5SJYRHA0")
     return true
   }
