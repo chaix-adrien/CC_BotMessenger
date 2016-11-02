@@ -291,7 +291,7 @@ function sendSampleVideo(id, text) {
 }
 
 function searchThis(id, text) {
-  let search = ""
+  var search = ""
   if (text.toLowerCase().indexOf("search") !== -1) {
     search = text.split("seach")[1]
   } else search = text.split("cherche")[1]
