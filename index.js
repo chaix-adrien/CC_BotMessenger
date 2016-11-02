@@ -52,9 +52,8 @@ function sendMessage(recipientId, message) {
   });
 };
 
-function pictureMessage(id, urlPicture, text) {
+function pictureMessage(id, urlPicture) {
   message = {
-    "text": text,
     "attachment": {
       "type": "image",
       "payload": {
