@@ -29,6 +29,9 @@ en code comme "kittenMessage" dans index.js (creer une fonction par type de repo
 -faire passer le callback du post webhook dans une fonction a part (plus clair)
 
 -dans un premier temps, ils essaie les fonction les une apres les autres en remplacant la fonction appelé de l'exemple
+textMessage(id, text)
+questionMessage(id, urlPhoto, buttons)
+
 -dans un second temps, ils mettent en place le JSON pour faire les recherche automatique
   -creer myBot.js
   -expliquer pourquoi les return true / false sont necessaire

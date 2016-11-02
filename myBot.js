@@ -1,3 +1,5 @@
+const questionMessage = require('./index.js')
+
 
 // send rich message with kitten
 function kittenMessage(id, text) {
