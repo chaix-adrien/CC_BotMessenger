@@ -224,9 +224,7 @@ function sendCatPicture(id, text) {
 };
 
 function rickroll(id, text) {
-  const lower = text.toLowerCase
-  console.log(lower)
-  if (lower.indexOf("what the name of the song") !== -1) {
+  if (text.toLowerCase().indexOf("what the name of the song") !== -1) {
     textMessage(id, "https://www.youtube.com/watch?v=oHg5SJYRHA0")
     return true
   }
