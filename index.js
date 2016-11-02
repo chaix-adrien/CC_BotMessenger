@@ -295,6 +295,6 @@ function searchThis(id, text) {
   if (text.toLowerCase().indexOf("search") !== -1) {
     search = text.split("seach")[1]
   } else search = text.split("cherche")[1]
-  textMessage(id, "https://www.google.com/search?q=+rebord+arrondi+droit&btnI=")
+  textMessage(id, "https://www.google.com/search?q=" + encodeURI(search) +"&btnI=")
   return true
 }
