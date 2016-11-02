@@ -18,3 +18,4 @@ app.get('/webhook', function (req, res) {
     } else {
         res.send('Invalid verify token');
     }
+});
