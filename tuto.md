@@ -34,7 +34,7 @@ audioMessage
 fileMessage
 videoMessage
 pictureMessage
-questionMessage(id, urlPhoto, buttons)
+questionMessage(id, urlPicture, title, subtitle, buttons)
 
 -dans un second temps, ils mettent en place le JSON pour faire les recherche automatique
   -creer myBot.js

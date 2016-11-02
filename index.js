@@ -148,20 +148,16 @@ function onMessageBotAction(id, text) {
   for (config of myBot) { //on boucle sur les differentes config
     console.log(config)
     for (word of words) { //pour chaques config, on boucle sur tout les mots reçut
-      console.log("word:", word)
-      if (word === config.word) { //si le mot est celui de la config
-        console.log("word match")
-        if (config.type === "message") { //on dispatch les differents types d'action (message / function / photo oû content = url ...)
-          console.log("send message:", config.content)
-          textMessage(id, config.content)
-          return //on valide
-        } else if (config.type === "function") {
-          console.log("call function:", config.content)
-          if (config.content(id, text)) { //si la fonction valide la saisie et la traite
-            console.log("VALID")
+      for (configWord of config.word) {
+        if (word === configWord) { //si le mot est celui de la config
+          if (config.type === "message") { //on dispatch les differents types d'action (message / function / photo oû content = url ...)
+            textMessage(id, config.content)
             return //on valide
+          } else if (config.type === "function") {
+            if (config.content(id, text)) { //si la fonction valide la saisie et la traite
+              return //on valide
+            }
           }
-          console.log("INVALID")
         }
       }
     }
@@ -190,47 +186,42 @@ app.post('/webhook', onMessage);
 */
 const myBot = [
   {
-    word: "help",
+    word: ["help"],
     type: "message",
     content: "Pour commencer, essaie \"audio\", \"video\", \"repete\" ou \"chat\"",
   },
   {
-    word: "XxCOBRAxX",
+    word: ["XxCOBRAxX"],
     type: "function",
     content: displayAllBot,
   },
   {
-    word: "chat",
+    word: ["chat"],
     type: "function",
     content: sendCatPicture,
   },
   {
-    word: "chat",
+    word: ["chat"],
     type: "message",
     content: "t'aime les pitis chat? Essaie \"chat 300 400\""
   },
   {
-    word: "repete",
+    word: ["repete"],
     type: "function",
     content: textMessage,
   },
   {
-    word: "song",
+    word: "what's the name of the song".split(" "),
     type: "function",
     content: rickroll,
   },
   {
-    word: "song",
-    type: "function",
-    content: rickroll,
-  },
-  {
-    word: "audio",
+    word: ["audio"],
     type: "function",
     content: sendSampleAudio,
   },
   {
-    word: "video",
+    word: ["video"],
     type: "function",
     content: sendSampleVideo,
   },
@@ -254,7 +245,7 @@ function sendCatPicture(id, text) {
       const buttons = [{
         "type": "web_url",
         "url": imageUrl,
-        "title": "Montre moi ce chat de plus pres"
+        "title": "Agrandir"
       }, {
         "type": "postback",
         "title": "J'aime ce chat",
