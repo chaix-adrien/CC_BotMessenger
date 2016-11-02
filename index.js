@@ -254,11 +254,11 @@ function sendCatPicture(id, text) {
       const buttons = [{
         "type": "web_url",
         "url": imageUrl,
-        "title": "Voici un pitit chat"
+        "title": "Montre moi ce chat de plus pres"
       }, {
         "type": "postback",
         "title": "J'aime ce chat",
-        "payload": "User " + id + " likes kitten " + imageUrl,
+        "payload": "repete",
       }]
       questionMessage(id, imageUrl, "Voici un petit chat", "avou il est trop kawai", buttons);
       return true;
