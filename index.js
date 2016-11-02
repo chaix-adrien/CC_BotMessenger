@@ -182,13 +182,13 @@ const myBot = [
   },
   {
     word: "chat",
-    type: "function",
-    content: sendCatPicture,
+    type: "message",
+    content: "t'aime les pitis chat? Essaie \"chat 300 400\""
   },
   {
     word: "chat",
-    type: "message",
-    content: "t'aime les pitis chat? Essaie \"chat 300 400\""
+    type: "function",
+    content: sendCatPicture,
   },
   {
     word: "repete",
@@ -204,6 +204,11 @@ const myBot = [
     word: "song",
     type: "function",
     content: rickroll,
+  },
+  {
+    word: "audio",
+    type: "function",
+    content: sendSampleAudio,
   },
 ]
 
@@ -250,4 +255,8 @@ function displayAllBot(id, text) {
   for (config of myBot) {
     textMessage(id, JSON.stringify(config))
   }
+}
+
+function sendSampleAudio(id, text) {
+  audioMessage(id, "http://www.auboutdufil.com/get.php?web=https://archive.org/download/auboutdufil-archives/485/Kubbi-Ember-04Cascade.mp3")
 }
