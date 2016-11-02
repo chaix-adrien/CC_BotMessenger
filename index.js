@@ -96,7 +96,7 @@ function videoMessage(id, urlVideo) {
     "attachment": {
       "type": "video",
       "payload": {
-        "url": urlFile
+        "url": urlVideo
       }
     }
   };
