@@ -4,6 +4,12 @@ var request = require('request');
 var app = express();
 var myBoot = require('./myBot.js')
 
+/*
+*
+* CONFIG
+*
+*/
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
@@ -22,45 +28,13 @@ app.get('/webhook', function (req, res) {
     }
 });
 
+/*
+*
+* SEND FONCTIONS
+*
+*/
 
-// send rich message with kitten
-function kittenMessage(id, text) {
-
-  text = text || "";
-  var values = text.split(' ');
-  if (values.length === 3 && values[0] === 'kitten') {
-    if (Number(values[1]) > 0 && Number(values[2]) > 0) {
-      var imageUrl = "https://placekitten.com/" + Number(values[1]) + "/" + Number(values[2]);
-      message = {
-        "attachment": {
-          "type": "template",
-          "payload": {
-            "template_type": "generic",
-            "elements": [{
-              "title": "Kitten",
-              "subtitle": "Cute kitten picture",
-              "image_url": imageUrl ,
-              "buttons": [{
-                "type": "web_url",
-                "url": imageUrl,
-                "title": "Show kitten"
-              }, {
-                "type": "postback",
-                "title": "I like this",
-                "payload": "User " + id + " likes kitten " + imageUrl,
-              }]
-            }]
-          }
-        }
-      };
-      sendMessage(id, message);
-      return true;
-    }
-  }
-  return false;
-};
-
-// generic function sending messages
+// Envoi final
 function sendMessage(recipientId, message) {
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -79,7 +53,33 @@ function sendMessage(recipientId, message) {
   });
 };
 
-// handler receiving messages
+function questionMessage(id, urlPicture, buttons) {
+  message = {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [{
+          "title": "Kitten",
+          "subtitle": "Cute kitten picture",
+          "image_url": urlPicture ,
+          "buttons": buttons
+        }]
+      }
+    }
+  };
+  sendMessage(id, message);
+};
+
+function textMessage(id, text) {
+  sendMessage(id, {text: text})
+}
+
+/*
+*
+* HANDLER
+*
+*/
 
 function onMessageExempleAction(id, text) {
   if (!kittenMessage(id, text)) {
@@ -97,7 +97,7 @@ function onMessageBotAction(id, text) {
         console.log("word match")
         if (config.type === "message") { //on dispatch les differents types d'action (message / function / photo oû content = url ...)
           console.log("send message:", config.content)
-          sendMessage(id, config.content)
+          textMessage(id, config.content)
           return //on valide
         } else if (config.type === "function") {
           console.log("call function:", config.content)
