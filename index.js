@@ -330,8 +330,12 @@ function createMeme(id, text) {
 }
 
 function sendJoke(id, text) {
+  console.log("ici")
   fetch("http://api.icndb.com/jokes/random")
   .then(rep => rep.json())
-  .then(res => textMessage(id, res.value.joke))
+  .then(res => {
+    console.log(res)
+    textMessage(id, res.value.joke)
+  })
   return true
 }
