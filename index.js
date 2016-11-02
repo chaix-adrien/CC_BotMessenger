@@ -312,8 +312,8 @@ function createMeme(id, text) {
     var urlPic = param[0]
     const first = param[1]
     const last = param[2]
-    fetch("https://memegen.link/custom/" + first + (last ? ("/" + last) : "") + ".jpg?alt=https://www.gstatic.com/webp/gallery/1.jpg")
-    .then(rep => console.log(rep))
+    pictureMessage(id, "https://memegen.link/custom/" + first + (last ? ("/" + last) : "") + ".jpg?alt=https://www.gstatic.com/webp/gallery/1.jpg")
+    
     return true
   }
   return false
