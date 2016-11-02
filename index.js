@@ -230,6 +230,11 @@ const myBot = [
     type: "function",
     content: searchThis,
   },
+  {
+    word: ["meme"],
+    type: "function",
+    content: createMeme,
+  }, 
 ]
 
 
@@ -292,9 +297,22 @@ function sendSampleVideo(id, text) {
 
 function searchThis(id, text) {
   var search = ""
-  if (text.toLowerCase().indexOf("search") !== -1) {
-    search = text.split("seach")[1]
-  } else search = text.split("cherche")[1]
+  if (text.toLowerCase().indexOf("search ") !== -1) {
+    search = text.split("search ")[1]
+  } else search = text.split("cherche ")[1]
   textMessage(id, "https://www.google.com/search?q=" + encodeURI(search) +"&btnI=")
   return true
+}
+
+function createMeme(id, text) {
+  const param = text.split("meme ")[1].split(" ")
+  if (param.length > 2) {
+    var urlPic = param[0]
+    const first = param[1]
+    const last = param[2]
+    fetch("https://memegen.link/custom/" + first + (last ? ("/" + last) : "") + ".jpg?alt=https://www.gstatic.com/webp/gallery/1.jpg")
+    .then(rep => console.log(rep))
+    return true
+  }
+  return false
 }
