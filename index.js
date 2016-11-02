@@ -229,16 +229,16 @@ function sendCatPicture(id, text) {
   console.log(JSON.stringify(myBot))
   text = text || "";
   var values = text.split(' ');
-  if (values.length === 3 && values[0] === 'kitten') {
+  if (values.length === 3 && values[0] === 'chat') {
     if (Number(values[1]) > 0 && Number(values[2]) > 0) {
       var imageUrl = "https://placekitten.com/" + Number(values[1]) + "/" + Number(values[2]);
       const buttons = [{
         "type": "web_url",
         "url": imageUrl,
-        "title": "Show kitten"
+        "title": "Voici un pitit chat"
       }, {
         "type": "postback",
-        "title": "I like this",
+        "title": "J'aime ce chat",
         "payload": "User " + id + " likes kitten " + imageUrl,
       }]
       pictureMessage(id, imageUrl, "Hello");
