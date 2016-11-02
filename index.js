@@ -53,7 +53,7 @@ function sendMessage(recipientId, message) {
 };
 
 function pictureMessage(id, urlPicture) {
-  message = {
+  const message = {
     "attachment": {
       "type": "image",
       "payload": {
@@ -62,25 +62,54 @@ function pictureMessage(id, urlPicture) {
     }
   };
   sendMessage(id, message);
+  return true
 };
 
-function audioMessage(id, audioUrl) {
-  message = {
+function audioMessage(id, urlAudio) {
+  const message = {
     "attachment": {
       "type": "audio",
       "payload": {
-        "template_type": "generic",
-        "elements": [{
-          "url": urlPicture ,
-        }]
+        "url": urlAudio
       }
     }
   };
   sendMessage(id, message);
+  return true
+}
+
+function fileMessage(id, urlFile) {
+  const message = {
+    "attachment": {
+      "type": "file",
+      "payload": {
+        "url": urlFile
+      }
+    }
+  };
+  sendMessage(id, message);
+  return true
+}
+
+function videoMessage(id, urlVideo) {
+  const message = {
+    "attachment": {
+      "type": "video",
+      "payload": {
+        "url": urlFile
+      }
+    }
+  };
+  sendMessage(id, message);
+  return true
 }
 
 function textMessage(id, text) {
-  sendMessage(id, {text: text})
+  const message = {
+    text: text,
+  }
+  sendMessage(id, message)
+  return true
 }
 
 /*
@@ -142,14 +171,19 @@ app.post('/webhook', onMessage);
 */
 const myBot = [
   {
-    word: "kitten",
+    word: "chat",
     type: "function",
-    content: kittenMessage,
+    content: sendCatPicture,
   },
   {
-    word: "kitten",
+    word: "chat",
     type: "message",
-    content: "Oh, you love kitten? try \"kitten 300 400\""
+    content: "t'aime les pitis chat? Essaie \"chat 300 400\""
+  },
+  {
+    word: "repete",
+    type: "function",
+    content: textMessage,
   },
 ]
 
@@ -161,7 +195,7 @@ const myBot = [
 */
 
 // send rich message with kitten
-function kittenMessage(id, text) {
+function sendCatPicture(id, text) {
 
   text = text || "";
   var values = text.split(' ');
