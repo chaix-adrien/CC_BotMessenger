@@ -8,8 +8,10 @@ app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
 
 app.get('/', function (req, res) {
-    res.send(process.env.PAGE_ACCESS_TOKEN);
+    console.log(process.env.PAGE_ACCESS_TOKEN)
+    console.log("mdr")
     res.send('end');
+    res.send(process.env.PAGE_ACCESS_TOKEN);
 });
 
 // Facebook Webhook
