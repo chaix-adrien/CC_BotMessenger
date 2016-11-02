@@ -168,7 +168,7 @@ function kittenMessage(id, text) {
         "title": "I like this",
         "payload": "User " + id + " likes kitten " + imageUrl,
       }]
-      questionMessage(id, message, buttons);
+      questionMessage(id, imageUrl, buttons);
       return true;
     }
   }
