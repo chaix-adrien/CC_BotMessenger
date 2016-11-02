@@ -2,16 +2,16 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
+import myBoot from './myBoot.js'
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
 
 app.get('/', function (req, res) {
-    console.log(process.env.PAGE_ACCESS_TOKEN)
-    console.log("mdr")
-    res.send(process.env.PAGE_ACCESS_TOKEN);
-    res.send('end');
+  console.log("dans la connexion")
+  res.send(process.env.PAGE_ACCESS_TOKEN);
+  res.send('end');
 });
 
 // Facebook Webhook
@@ -25,7 +25,7 @@ app.get('/webhook', function (req, res) {
 
 
 // send rich message with kitten
-function kittenMessage(recipientId, text) {
+function kittenMessage(id, text) {
 
   text = text || "";
   var values = text.split(' ');
@@ -48,13 +48,13 @@ function kittenMessage(recipientId, text) {
               }, {
                 "type": "postback",
                 "title": "I like this",
-                "payload": "User " + recipientId + " likes kitten " + imageUrl,
+                "payload": "User " + id + " likes kitten " + imageUrl,
               }]
             }]
           }
         }
       };
-      sendMessage(recipientId, message);
+      sendMessage(id, message);
       return true;
     }
   }
@@ -81,15 +81,30 @@ function sendMessage(recipientId, message) {
 };
 
 // handler receiving messages
-app.post('/webhook', function (req, res) {
+
+function onMessageExempleAction(id, text) {
+  if (!kittenMessage(id, text)) {
+    sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+  }
+}
+
+function onMessageBotAction(id, text) {
+  for (config of myBoot) {
+    console.log("ici")
+    console.log()
+  }
+}
+
+function onMessage(req, res) {
   var events = req.body.entry[0].messaging;
   for (i = 0; i < events.length; i++) {
     var event = events[i];
-     if (event.message && event.message.text) {
-      if (!kittenMessage(event.sender.id, event.message.text)) {
-        sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
-      }
+      if (event.message && event.message.text) {
+        onMessageExempleAction(event.sender.id, event.message.text)
     }
   }
   res.sendStatus(200);
-});
+}
+
+
+app.post('/webhook', onMessage);
