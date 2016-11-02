@@ -263,9 +263,11 @@ function displayAllBot(id, text) {
 }
 
 function sendSampleAudio(id, text) {
+  textMessage(id, "ça arrive, on a pas la fibre a la campagne!")
   audioMessage(id, "http://www.auboutdufil.com/get.php?web=https://archive.org/download/auboutdufil-archives/485/Kubbi-Ember-04Cascade.mp3")
 }
 
 function sendSampleVideo(id, text) {
+  textMessage(id, "ça arrive, on a pas la fibre a la campagne!")
   videoMessage(id, "https://s3.amazonaws.com/distill-videos/videos/processed/1007/2014-12-20-01.mp4.mp4")
 }
