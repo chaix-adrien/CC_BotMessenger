@@ -201,13 +201,13 @@ const myBot = [
   },
   {
     word: "chat",
-    type: "message",
-    content: "t'aime les pitis chat? Essaie \"chat 300 400\""
+    type: "function",
+    content: sendCatPicture,
   },
   {
     word: "chat",
-    type: "function",
-    content: sendCatPicture,
+    type: "message",
+    content: "t'aime les pitis chat? Essaie \"chat 300 400\""
   },
   {
     word: "repete",
