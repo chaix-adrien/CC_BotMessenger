@@ -210,6 +210,11 @@ const myBot = [
     type: "function",
     content: sendSampleAudio,
   },
+  {
+    word: "video",
+    type: "function",
+    content: sendSampleVideo,
+  },
 ]
 
 
@@ -259,4 +264,8 @@ function displayAllBot(id, text) {
 
 function sendSampleAudio(id, text) {
   audioMessage(id, "http://www.auboutdufil.com/get.php?web=https://archive.org/download/auboutdufil-archives/485/Kubbi-Ember-04Cascade.mp3")
+}
+
+function sendSampleAudio(id, text) {
+  videoMessage(id, "https://s3.amazonaws.com/distill-videos/videos/processed/1007/2014-12-20-01.mp4.mp4")
 }
