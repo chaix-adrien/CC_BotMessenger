@@ -190,7 +190,7 @@ const myBot = [
   {
     word: ["help"],
     type: "message",
-    content: "Pour commencer, essaie \"audio\", \"video\", \"repete\" ou \"chat\"",
+    content: "Pour commencer, essaie \"audio\", \"video\", \"repete\", \"chat\", \"meme\" ou \"blague\"",
   },
   {
     word: ["XxCOBRAxX"],
