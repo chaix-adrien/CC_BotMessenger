@@ -177,8 +177,8 @@ const myBot = [
   },
   {
     word: "XxCOBRAxX",
-    type: "message",
-    content: JSON.stringify(myBot),
+    type: "function",
+    content: displayAllBot,
   },
   {
     word: "chat",
@@ -246,3 +246,6 @@ function rickroll(id, text) {
   return false
 }
 
+function displayAllBot(id, text) {
+  textMessage(id, JSON.stringify(myBot))
+}
