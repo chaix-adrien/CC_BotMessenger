@@ -52,6 +52,25 @@ function sendMessage(recipientId, message) {
   });
 };
 
+function questionMessage(id, urlPicture, title, subtitle, buttons) {
+  const message = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[{
+          "title": title,
+          "image_url": urlPicture,
+          "subtitle": subtitle,
+          "buttons":buttons,
+        }]
+      }
+    }
+  };
+  sendMessage(id, message);
+  return true
+}
+
 function pictureMessage(id, urlPicture) {
   const message = {
     "attachment": {
@@ -241,7 +260,7 @@ function sendCatPicture(id, text) {
         "title": "J'aime ce chat",
         "payload": "User " + id + " likes kitten " + imageUrl,
       }]
-      pictureMessage(id, imageUrl, "Hello");
+      questionMessage(id, imageUrl, "Voici un petit chat", "avou il est trop kawai", buttons);
       return true;
     }
   }
