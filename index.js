@@ -247,5 +247,7 @@ function rickroll(id, text) {
 }
 
 function displayAllBot(id, text) {
-  textMessage(id, JSON.stringify(myBot))
+  for (config of myBot) {
+    textMessage(id, JSON.stringify(config))
+  }
 }
