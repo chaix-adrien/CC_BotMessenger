@@ -36,7 +36,7 @@ function kittenMessage(id, text) {
   return false;
 };
 
-export default config = [
+const config = [
   {
     word: "kitten",
     place: 0,
@@ -50,3 +50,5 @@ export default config = [
     content: "Oh, you love kitten? try >kitten 300 400"
   }
 ]
+
+module.exports = config

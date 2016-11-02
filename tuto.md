@@ -11,6 +11,9 @@ Expliquer le but d'une clef API
 ##index.js
 expliquer le principe de requette (POST / GET / URL)
 verify_token && testbot_verify_token configurable mais a modifier par la suite ducoup
+POUR LES LOG DE DEBUG:
+  console.log() dans le programe
+  heroku logs dans un term
 
 ##Facebook
 Leurs expliquer comment convertir les requettes de:

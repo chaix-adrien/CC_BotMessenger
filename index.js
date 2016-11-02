@@ -2,14 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
-import myBoot from './myBoot.js'
+var myBoot = require('./myBot.js')
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.listen((process.env.PORT || 3000));
 
 app.get('/', function (req, res) {
-  console.log("dans la connexion")
+  console.log("dans la conec")
   res.send(process.env.PAGE_ACCESS_TOKEN);
   res.send('end');
 });
