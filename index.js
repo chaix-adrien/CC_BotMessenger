@@ -243,7 +243,7 @@ const myBot = [
     content: "mauvaise syntaxe: meme {url de l'image} {premiere ligne} {(optionel) seconde ligne}",
   },
   {
-    word: ["blague, joke"],
+    word: ["blague", "joke"],
     type: "function",
     content: sendJoke,
   }
