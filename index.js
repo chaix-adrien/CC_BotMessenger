@@ -313,7 +313,7 @@ function searchThis(id, text) {
 
 function createMeme(id, text) {
   const param = text.split("meme ")[1].split(" ")
-  if (param.length > 2) {
+  if (param.length >= 2) {
     var urlPic = param[0]
     const first = param[1]
     const last = param[2]
