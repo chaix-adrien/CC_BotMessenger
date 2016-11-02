@@ -10,8 +10,7 @@ app.listen((process.env.PORT || 3000));
 
 app.get('/', function (req, res) {
   console.log("dans la conec")
-  res.send(process.env.PAGE_ACCESS_TOKEN);
-  res.send('end');
+  res.send("Mon bot fonctionne !");
 });
 
 // Facebook Webhook
