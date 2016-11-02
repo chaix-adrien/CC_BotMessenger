@@ -164,6 +164,7 @@ function onMessageBotAction(id, text) {
 }
 
 function onMessage(req, res) {
+  console.log("Message recu")
   var events = req.body.entry[0].messaging;
   for (i = 0; i < events.length; i++) {
     var event = events[i];
@@ -221,6 +222,11 @@ const myBot = [
   },
   {
     word: ["video"],
+    type: "function",
+    content: sendSampleVideo,
+  },
+  {
+    word: ["search", "cherche"],
     type: "function",
     content: sendSampleVideo,
   },
